@@ -103,17 +103,15 @@ console.log(contactInfo);
 
 
 /* Request 3: Find out how many universities have the string "Uni" included in their name. Create a new array called uni that contains them all. Log the result. */
-const uni = graduates.includes(uniFinder);
+const uni = graduates.map(finder)
 
-function uniFinder (find) {
-  if (find.university.includes('Uni')) {
-    return find.university
+function finder (name) {
+  if (name.university.includes("Uni")) {
+    return name.university
   }
-  
 }
-console.log(uni);
 
-// We never went over the includes function :/
+console.log(uni)
 
 
 // ==== ADVANCED Array Methods ====
