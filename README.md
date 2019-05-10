@@ -31,23 +31,26 @@ Edit this document to include your answers after each question. Make sure to lea
 
 1. Describe the biggest difference between `.forEach` & `.map`.
 
-forEach runs a function over each item in the array, mutating the original array - essentially a for loop.  map runs a function over the array the same way, but doesn't mutate the original array, instead creating a new array before mutating it with a function
+forEach runs a function over each item in the array, mutating the original array - essentially a for loop.  map runs a function over the array the same way, but doesn't mutate the original array, instead creating a new array before mutating it with a function.
 
 2. What is the difference between a function and a method?
 
-Function is a stand alone, it exists outside a class, outside curly brackets, method is a function inside a pair of brackets, or rather, a scoped function
+Function is a stand alone, it exists outside a class, outside curly brackets.  It can be called wherever needed, and passed whatever data is needed
+A method is a function inside a class; it implicitly operates on the classes data and can't be called without referencing the object it's attached to
 
 3. What is closure?
 
-A closure is a scoped object or function; can't have a function without closure.  What exists inside the closure is inaccessible outside it unless there is a return statement. 
+A closure is a scoped object or function; can't have a function without closure.  What exists inside the closure is inaccessible outside it unless there is a return statement. A closure encloses what's inside it, isolating it from other functions or objects, creating a standalone piece of code
 
 4. Describe the four rules of the 'this' keyword.
 
 global context = console.log(this) refers to the window or global object - essentially the entire javascript language
 
-implicit binding - when inside a function or object, this refers to the function or object itself.  When a function is called by dot notation, the object left of the dot is "this"
+implicit binding - when inside a function or object, this refers to the function or object itself.  When a function is called by dot notation, the object left of the dot is "this".  A function inside a class is implicitly bound to that class
 
-new binding - creating a new class.  "this" in the class constructor will refer to the object's children or creations once they're called.  When a constructor is called, this refers to the specific instance that's called
+new binding - contextual use of this, such that this applies to a new class upon its creation by importing the methods of the parent.  "this" in the class constructor will refer to the object's children or creations once they're called.  When a constructor is called, this refers to the specific instance that's called
+
+explicit binding - overriding a function in the case of apply, binding a keyword to a function in the case of .bind.  An example of .call function might be when a child prototype class doesn't inherit from the parent, but the .call explicitly enables the parent's use of this in methods in the child function when it invokes the parents methods.
 
 5. Why do we need super() in an extended class?
 
