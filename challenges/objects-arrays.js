@@ -77,14 +77,11 @@ const graduates = [{"id":1,"first_name":"Cynde","university":"Missouri Southern 
 
 
 Once you have the new array created, sort the universities alphabetically and log the result. */
+
 const universities = graduates.map(universityNames).sort();
 function universityNames (names) {
   return names.university
 }
-
-// for (let i = 0; i < graduates.length; i++) {
-//   universities.push(${university})
-// }
 
 console.log(universities)
 
@@ -132,7 +129,9 @@ zooAnimals = [{"animal_name":"Jackal, asiatic","population":5,"scientific_name":
 
 /* Request 1: .forEach()
 
-The zoo wants to display both the scientific name and the animal name in front of the habitats.  Return an array with only the animal and scientific names in it.  The individual values in the array should look like this "Name: Jackal, asiatic, Scientific: Canis aureus."
+The zoo wants to display both the scientific name and the animal name in front of the habitats.  
+Return an array with only the animal and scientific names in it.  
+The individual values in the array should look like this "Name: Jackal, asiatic, Scientific: Canis aureus."
 
 */
 
@@ -142,7 +141,7 @@ const animalNames = []
 zooAnimals.forEach(name)
 
 function name (scien) {
-  animalNames.push (`Name: ${scien.animal_name} Scientifi: ${scien.scientific_name}`)
+  animalNames.push (`Name: ${scien.animal_name}, Scientific: ${scien.scientific_name}.`)
 }
 console.log(animalNames);
 
@@ -196,4 +195,30 @@ console.log(populationTotal);
 Stretch: If you haven't already, convert your array method callbacks into arrow functions.
 
 */
+
+
+
+//Let the record show I don't like fat arrow - compression makes the functions and order of operations harder to understand at a glance
+
+console.log(graduates.map(names => names.university).sort());
+
+console.log(graduates.map(nameEmail => `${nameEmail.first_name} ${nameEmail.email}`));
+
+// zooAnimals.forEach(name)
+
+// function name (scien) {
+//   animalNames.push (`Name: ${scien.animal_name} Scientifi: ${scien.scientific_name}`)
+// }
+console.log(zooAnimals.forEach(scien => `Name: ${scien.animal_name}, Scientific: ${scien.scientific_name}`));
+
+
+
+// console.log(graduates.map(name => if (name.university.includes("Uni")) => return name.university));
+// function finder (name) {
+//   if (name.university.includes("Uni")) {
+//     return name.university
+//   }
+// }
+
+
 
