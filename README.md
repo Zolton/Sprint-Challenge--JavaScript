@@ -31,32 +31,46 @@ Edit this document to include your answers after each question. Make sure to lea
 
 1. Describe the biggest difference between `.forEach` & `.map`.
 
+forEach runs a function over each item in the array, mutating the original array - essentially a for loop.  map runs a function over the array the same way, but doesn't mutate the original array, instead creating a new array before mutating it with a function
+
 2. What is the difference between a function and a method?
+
+Function is a stand alone, it exists outside a class, outside curly brackets, method is a function inside a pair of brackets, or rather, a scoped function
 
 3. What is closure?
 
+A closure is a scoped object or function; can't have a function without closure.  What exists inside the closure is inaccessible outside it unless there is a return statement. 
+
 4. Describe the four rules of the 'this' keyword.
 
+global context = console.log(this) refers to the window or global object - essentially the entire javascript language
+
+implicit binding - when inside a function or object, this refers to the function or object itself.  When a function is called by dot notation, the object left of the dot is "this"
+
+new binding - creating a new class.  "this" in the class constructor will refer to the object's children or creations once they're called.  When a constructor is called, this refers to the specific instance that's called
+
 5. Why do we need super() in an extended class?
+
+to feed variables back to the parent class.  The child class uses constructor to take in arguments or parameters relevant to itself, but super is for sending back relevant parameters to the parent class constructor so its functions can run the child's data.  Doing so gets rid of the need to copy-paste parent functions inside children objects
 
 ## Project Set up
 
 Follow these steps to set up and work on your project:
 
-- [ ] Create a forked copy of this project.
-- [ ] Add PM as collaborator on Github.
-- [ ] Clone your OWN version of Repo (Not Lambda's by mistake!).
-- [ ] Create a new Branch on the clone: git checkout -b `<firstName-lastName>`.
-- [ ] Create a pull request before you start working on the project requirements.  You will continuously push your updates throughout the project.
-- [ ] You are now ready to build this project with your preferred IDE
-- [ ] Implement the project on your Branch, committing changes regularly.
-- [ ] Push commits: git push origin `<firstName-lastName>`.
+- [x ] Create a forked copy of this project.
+- [xx ] Add PM as collaborator on Github.
+- [ x] Clone your OWN version of Repo (Not Lambda's by mistake!).
+- [ x] Create a new Branch on the clone: git checkout -b `<firstName-lastName>`.
+- [x ] Create a pull request before you start working on the project requirements.  You will continuously push your updates throughout the project.
+- [ x] You are now ready to build this project with your preferred IDE
+- [x ] Implement the project on your Branch, committing changes regularly.
+- [x ] Push commits: git push origin `<firstName-lastName>`.
 
 Follow these steps for completing your project:
 
-- [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's  Repo).
-- [ ] Add your Project Manager as a Reviewer on the Pull-request
-- [ ] PM then will count the HW as done by  merging the branch back into master.
+- [ x] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's  Repo).
+- [x ] Add your Project Manager as a Reviewer on the Pull-request
+- [x ] PM then will count the HW as done by  merging the branch back into master.
 
 
 ## Minimum Viable Product
