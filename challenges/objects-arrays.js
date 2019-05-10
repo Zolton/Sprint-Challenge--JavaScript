@@ -199,26 +199,32 @@ Stretch: If you haven't already, convert your array method callbacks into arrow 
 
 
 //Let the record show I don't like fat arrow - compression makes the functions and order of operations harder to understand at a glance
+// Plus, some things just break when converted over
 
 console.log(graduates.map(names => names.university).sort());
 
 console.log(graduates.map(nameEmail => `${nameEmail.first_name} ${nameEmail.email}`));
 
-// zooAnimals.forEach(name)
-
-// function name (scien) {
-//   animalNames.push (`Name: ${scien.animal_name} Scientifi: ${scien.scientific_name}`)
-// }
-console.log(zooAnimals.forEach(scien => `Name: ${scien.animal_name}, Scientific: ${scien.scientific_name}`));
+console.log(zooAnimals.map(name => name.animal_name.toLowerCase()));
 
 
+// Not sure why this isn't working.  Another reason I don't like fat arrows - forEach doesn't really work with return statements, and fat arrow doesn't like .push
+// For some reason I don't understand, forEach only works when I newArray.push.
+//console.log(zooAnimals.forEach(scien => `Name: ${scien.animal_name}, Scientific: ${scien.scientific_name}`));
 
-// console.log(graduates.map(name => if (name.university.includes("Uni")) => return name.university));
-// function finder (name) {
-//   if (name.university.includes("Uni")) {
-//     return name.university
-//   }
-// }
+
+// Not sure why this isn't working
+//console.log(graduates.includes("Uni").map(name => name.university));
+
+
+// I'm in the ballpark, solution should look something like this.  Just can't figure what's missing
+// zooAnimals.filter(pop => pop.population < 5 ? console.log(pop.animal_name))
+
+
+// Something like that, I guess
+//console.log(zooAnimals.reduce(acc, cv => acc + cv.population), 0);
+
+
 
 
 
