@@ -8,27 +8,54 @@
 
 // tyrannosaurus, carnivorous, 7000kg, 12m, Late Cretaceous
 
+const tyrannosaurus = {
+  objectName: "tyrannosaurus",
+  diet: "carnivorous",
+  weight: "7000kg",
+  length: "12m",
+  period: "Late Cretaceous",
+  speak () {
+    return "RAWERSRARARWERSARARARRRR!"
+  }
+}
+
 // stegosaurus, herbivorous, 2000kg, 9m, Late Jurassic
 
+const stegosaurus = {
+  objectName: "stegosaurus",
+  diet: "herbivorous",
+  weight: "2000kg",
+  length: "9m",
+  period: "Late Jurassic",
+}
+
 // velociraptor, carnivorous, 15kg, 1.8m, Late Cretaceous
+
+const velociraptor = {
+  objectName: "Velociraptor",
+  diet: "carnivorous",
+  weight: "15kg",
+  length: "1.8m",
+  period: "Late Cretaceous",
+}
 
 // Using your dinosaur objects, log answers to these questions:
 
 // How much did tyrannosaurus weigh?
-console.log();
+console.log(tyrannosaurus.weight);
 
 // What was the diet of a velociraptor?
-console.log();
+console.log(velociraptor.diet);
 
 // How long was a stegosaurus?
-console.log();
+console.log(stegosaurus.length);
 
 // What time period did tyrannosaurus live in?
-console.log();
+console.log(tyrannosaurus.period);
 
 
 // Create a new roar method for the tyrannosaurus.  When called, return "RAWERSRARARWERSARARARRRR!" Log the result.
-console.log();
+console.log(tyrannosaurus.speak());
 
 
 // ==== Arrays ====
@@ -48,8 +75,14 @@ const graduates = [{"id":1,"first_name":"Cynde","university":"Missouri Southern 
 
 /* Request 1: Create a new array called universities that contains all the univeristies in the graduates array.  
 
+
 Once you have the new array created, sort the universities alphabetically and log the result. */
-const universities = [];
+
+const universities = graduates.map(universityNames).sort();
+function universityNames (names) {
+  return names.university
+}
+
 console.log(universities)
 
 /* Request 2: Create a new array called contactInfo that contains both first name and email of each student. 
@@ -58,13 +91,24 @@ The resulting contact information should have a space between the first name and
 Name email@example.com
 
 Log the result of your new array. */
-const contactInfo = [];
+const contactInfo = graduates.map(contact);
+
+function contact (nameEmail) {
+  return `${nameEmail.first_name} ${nameEmail.email}`
+}
 console.log(contactInfo);
 
 
 /* Request 3: Find out how many universities have the string "Uni" included in their name. Create a new array called uni that contains them all. Log the result. */
-const uni = [];
-console.log(uni);
+const uni = graduates.map(finder)
+
+function finder (name) {
+  if (name.university.includes("Uni")) {
+    return name.university
+  }
+}
+
+console.log(uni)
 
 
 // ==== ADVANCED Array Methods ====
@@ -85,19 +129,34 @@ zooAnimals = [{"animal_name":"Jackal, asiatic","population":5,"scientific_name":
 
 /* Request 1: .forEach()
 
-The zoo wants to display both the scientific name and the animal name in front of the habitats.  Return an array with only the animal and scientific names in it.  The individual values in the array should look like this "Name: Jackal, asiatic, Scientific: Canis aureus."
+The zoo wants to display both the scientific name and the animal name in front of the habitats.  
+Return an array with only the animal and scientific names in it.  
+The individual values in the array should look like this "Name: Jackal, asiatic, Scientific: Canis aureus."
 
 */
-const animalNames = [];
+
+
+const animalNames = []
+
+zooAnimals.forEach(name)
+
+function name (scien) {
+  animalNames.push (`Name: ${scien.animal_name}, Scientific: ${scien.scientific_name}.`)
+}
 console.log(animalNames);
 
 /* Request 2: .map()    
 
-The zoos need a list of all their animal's names (names only, not scientific) converted to lower case.  Create a new array named lowerCase and map over each name to convert them all to lower case.  Log the resut.
+The zoos need a list of all their animal's names (names only, not scientific) converted to lower case.  
+Create a new array named lowerCase and map over each name to convert them all to lower case.  Log the resut.
 
 */
 
-const lowerCase = [];
+const lowerCase = zooAnimals.map(lower)
+
+function lower (name) {
+  return name.animal_name.toLowerCase()
+}
 console.log(lowerCase); 
 
 /* Request 3: .filter() 
@@ -105,7 +164,16 @@ console.log(lowerCase);
 The zoos are concenred about animals with a lower population count. Find out which animals have a population less than 5.
 
 */
-const largerPopulation = [];
+const largerPopulation = []
+
+zooAnimals.filter(populations)
+
+function populations (pop) {
+  if (pop.population < 5) {
+  largerPopulation.push (pop.animal_name)
+  }
+}
+
 console.log(largerPopulation);
 
 /* Request 4: .reduce() 
@@ -113,7 +181,12 @@ console.log(largerPopulation);
 The zoos need to know their total animal population across the United States.  Find the total population from all the zoos using the .reduce() method.
 
 */
-const populationTotal = 0;
+const populationTotal = zooAnimals.reduce(populate, 0)
+
+function populate (acc, cv) {
+  return acc + cv.population;
+}
+
 console.log(populationTotal);
 
 
@@ -122,4 +195,36 @@ console.log(populationTotal);
 Stretch: If you haven't already, convert your array method callbacks into arrow functions.
 
 */
+
+
+
+//Let the record show I don't like fat arrow - compression makes the functions and order of operations harder to understand at a glance
+// Plus, some things just break when converted over
+
+console.log(graduates.map(names => names.university).sort());
+
+console.log(graduates.map(nameEmail => `${nameEmail.first_name} ${nameEmail.email}`));
+
+console.log(zooAnimals.map(name => name.animal_name.toLowerCase()));
+
+
+// Not sure why this isn't working.  Another reason I don't like fat arrows - forEach doesn't really work with return statements, and fat arrow doesn't like .push
+// For some reason I don't understand, forEach only works when I newArray.push.
+//console.log(zooAnimals.forEach(scien => `Name: ${scien.animal_name}, Scientific: ${scien.scientific_name}`));
+
+
+// Not sure why this isn't working
+//console.log(graduates.includes("Uni").map(name => name.university));
+
+
+// I'm in the ballpark, solution should look something like this.  Just can't figure what's missing
+// zooAnimals.filter(pop => pop.population < 5 ? console.log(pop.animal_name))
+
+
+// Something like that, I guess
+//console.log(zooAnimals.reduce(acc, cv => acc + cv.population), 0);
+
+
+
+
 
